@@ -1,12 +1,15 @@
 import {Controller, Get} from "@nestjs/common";
+import {AppService} from "./app.service";
 
 // Маршрут, по которому будут отрабатывать запросы
 @Controller('/api')
 export class AppController {
 
+    constructor(private appService: AppService) {}
+
     @Get()
-    getUser() {
-        return "GET ALL USERS"
+    getUsers() {
+        return this.appService.getUsers()
     }
 
 }
